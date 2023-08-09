@@ -1,0 +1,11 @@
+class Solution:
+    def findPrefixScore(self, nums: List[int]) -> List[int]:
+        maximum = 0
+        curr = 0
+        output = []
+        for i in nums:
+            curr += i
+            maximum = max(i, maximum)
+            curr += maximum
+            output.append(curr)
+        return output
