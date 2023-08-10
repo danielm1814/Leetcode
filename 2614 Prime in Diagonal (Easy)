@@ -1,0 +1,17 @@
+class Solution:
+    def check_prime(self, n):
+        if n < 2:
+            return False
+        for i in range(2, int(sqrt(n))+1):
+            if n % i == 0:
+                return False
+        return True
+        
+    def diagonalPrime(self, nums: List[List[int]]) -> int:
+        largest_prime = 0
+        for r in range(len(nums)):
+            for c in range(len(nums[0])):
+                if r == c or c == (len(nums) - r - 1):
+                    if self.check_prime(nums[r][c]):
+                        largest_prime = max(largest_prime, nums[r][c])
+        return largest_prime
