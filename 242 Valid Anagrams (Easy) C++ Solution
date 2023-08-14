@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        map<char, int> counts;
+        for (int i = 0; i < int(s.length()); ++i){
+            char temp = s.at(i);
+            if (counts.find(temp) == counts.end()){
+                counts.insert({temp, 0});
+            }
+            ++counts[temp];
+        }
+        for (int i = 0; i < int(t.length()); ++i){
+            char temp = t.at(i);
+            if (counts.find(temp) != counts.end()){
+                --counts[temp];
+                if (counts[temp] == 0){
+                    counts.erase(temp);
+                }
+            }
+            else{
+                return false;
+            }
+        }
+        if (counts.size() > 0){
+            return false;
+        }
+        return true;
+    }
+};
