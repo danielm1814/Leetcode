@@ -1,0 +1,18 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int size = nums.length;
+        int counter = 0;
+        while (counter < size){
+            if (nums[counter] == val){
+                int temp = nums[counter];
+                nums[counter] = nums[size-1];
+                nums[size-1] = temp;
+                size -= 1;
+            }
+            else{
+                counter += 1;
+            }
+        }
+        return size;
+    }
+}
